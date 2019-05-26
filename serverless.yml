@@ -36,8 +36,8 @@ provider:
 
 # packaging information here
 functions:
-  get-runtime-max:
-    handler: getruntime/handler.getMessages
+  get-messages:
+    handler: getmessages/handler.getMessages
     runtime: python3.7
     timeout: 5
     environment:
@@ -63,12 +63,12 @@ functions:
             #  - X-Amz-Security-Token
             #  - X-Amz-User-Agent
             #allowCredentials: false
-  lambda-metrics:
+  put-message:
     runtime: dotnetcore2.1
     timeout: 30 # max for api-backed lambdas 
-    handler: CsharpHandlers::ServerlessPerformanceFramework.Handler::LambdaMetrics
+    handler: CsharpHandlers::MessagingApi.Handler::SendMessage
     package:
-      artifact: lambda-metrics-service/bin/release/netcoreapp2.1/deploy-package.zip
+      artifact: putmessage/bin/release/netcoreapp2.1/deploy-package.zip
     events:
       - http:
           path: messages/{groupId}
