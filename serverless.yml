@@ -1,6 +1,6 @@
 # Messaging API
 
-service: messaging-api
+service: messaging-app-api
 
 provider:
   name: aws
