@@ -38,10 +38,15 @@ def getMessages(event, context):
         if not result['Items']:
             print ("no records available for %s" % inputGroup)
         else:
-            maxItem = result['Items'][0]
-            print(maxItem)
-            jsonString = json.dumps(maxItem, cls=decimalencoder.DecimalEncoder)
-            print(jsonString)
+            #this code would return just the first message
+            #maxItem = result['Items'][0]
+            #print(maxItem)
+            #jsonString = json.dumps(maxItem, cls=decimalencoder.DecimalEncoder)
+            #print(jsonString)
+            
+            #  returning all messages
+            jsonString = json.dumps(result['Items'], cls=decimalencoder.DecimalEncoder)
+            print("all messages: %s" % jsonString)
             returnValue = jsonString
     except Exception as e:
         print("Generic error: %s" % e)  
