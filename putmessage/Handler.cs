@@ -29,7 +29,7 @@ namespace MessagingApi
             var response = new APIGatewayProxyResponse
             {
                 StatusCode = (result == 0) ? (int)HttpStatusCode.OK : (int)HttpStatusCode.InternalServerError,
-                Body =  $"{{Success: {result} }}",
+                Body =  $"{{\"Success\": {result} }}",
                 Headers = new Dictionary<string, string> {{ "Content-Type", "application/json" }}
             };
 
