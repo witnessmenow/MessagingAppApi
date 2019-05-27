@@ -65,7 +65,7 @@ functions:
       artifact: putmessage/bin/release/netcoreapp2.1/deploy-package.zip
     events:
       - http:
-          path: messages/{groupId}
+          path: messages
           method: post
           request:
             parameters:
