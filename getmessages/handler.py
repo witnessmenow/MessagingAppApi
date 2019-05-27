@@ -2,7 +2,7 @@
 import os
 import json
 
-from getruntime import decimalencoder
+from getmessages import decimalencoder
 import boto3
 from boto3.dynamodb.conditions import Key, Attr
 from botocore.exceptions import ClientError, ParamValidationError
@@ -20,7 +20,7 @@ def getMessages(event, context):
         result = table.query(
             TableName=os.environ['DYNAMODB_TABLE'],
             #IndexName='duration-index',
-            KeyConditionExpression=Key('groupId').eq('{}'.format(inputRuntime)),
+            KeyConditionExpression=Key('groupId').eq('{}'.format(inputGroup)),
             ProjectionExpression='groupId, #message, messageDateTime',
             ExpressionAttributeNames = { "#message": "message" },
             #ScanIndexForward=True # sort descending

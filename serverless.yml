@@ -26,12 +26,6 @@ provider:
         - "dynamodb:Query"
         - "dynamodb:Scan"
       Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/*/index/*"
-    - Effect: "Allow"
-      Action:
-        - "dynamodb:DescribeStream"
-        - "dynamodb:GetRecords"
-        - "dynamodb:GetShardIterator"
-        - "dynamodb:ListStreams"
 
 
 # packaging information here
@@ -83,7 +77,7 @@ functions:
 
 resources:
   Outputs:
-    SpfApiUrl:
+    MessagingApiUrl:
       Description: The URL for the published API
       Value:
         Fn::Join:
@@ -102,8 +96,8 @@ resources:
         AttributeDefinitions:
           - AttributeName: groupId
             AttributeType: S
-          - AttributeName: message
-            AttributeType: S   
+          #- AttributeName: message
+          #  AttributeType: S   
           - AttributeName: messageDateTime
             AttributeType: S                            
         KeySchema:
