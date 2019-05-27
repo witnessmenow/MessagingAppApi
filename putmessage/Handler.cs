@@ -19,6 +19,7 @@ namespace MessagingApi
        public async Task<APIGatewayProxyResponse> SendMessage(APIGatewayProxyRequest request, ILambdaContext context)
        {
             // Uncomment for debugging: Console.WriteLine(request.Body);
+            Console.WriteLine(request.Body);
             JsonSerializerSettings serSettings = new JsonSerializerSettings();
             serSettings.ContractResolver = new DefaultContractResolver();
             AddMetricsRequest metricsRequest = JsonConvert.DeserializeObject<AddMetricsRequest>(request.Body, serSettings);
